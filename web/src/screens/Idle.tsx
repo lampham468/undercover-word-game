@@ -43,13 +43,12 @@ export default function Idle({ onHost, onJoin, roomState }: {
             <div className="flex-1 flex items-center justify-center px-4">
                 <Middle>
                     <div className="space-y-4">
-                        <p>
-                            Host a room or join one. Only one game can run at a time.  
-                            When 3+ players are in the lobby, the host can start.  
-                            Everyone gets a secret word — except the impostor, who has none.  
-                            Take turns giving clues, then discuss and vote out the impostor.  
-                            The impostor wins if they avoid detection!
-                        </p>
+                        <ul className="list-disc text-left space-y-2 px-4">
+                            <li>3-8 players</li>
+                            <li>Citizens get same word</li>
+                            <li>Impostor gets no words</li>
+                            <li>Vote out the Impostor!</li>
+                        </ul>
                     </div>
                 </Middle>
             </div>
