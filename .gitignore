@@ -22,3 +22,32 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Wrangler (Cloudflare Workers)
+.wrangler/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Temporary files and caches
+.tmp/
+.cache/
+.temp/
+
+# Vite
+.vite/
+.vite-temp/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Turbo
+.turbo/

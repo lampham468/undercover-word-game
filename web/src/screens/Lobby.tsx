@@ -3,11 +3,10 @@ import Bottom from '../components/Bottom';
 import Middle from '../components/Middle';
 
 export default function Lobby({
-  players, onAddPlayer, onRemovePlayer, onStart, onLeave,
+  players, isHost, onStart, onLeave,
 }: {
   players: number;
-  onAddPlayer: () => void;
-  onRemovePlayer: () => void;
+  isHost: boolean;
   onStart: () => void;
   onLeave: () => void;
 }) {
@@ -25,21 +24,20 @@ export default function Lobby({
             <div>
               <p className="text-lg font-medium">{players}/8</p>
               <p className="text-neutral-600 mt-1">need 3 to play</p>
+              {isHost && <p className="text-xs text-blue-600 mt-1">You are the host</p>}
             </div>
 
-            {/* dev-only helpers */}
-            <div className="flex justify-center gap-2 text-xs">
-              <button className="rounded-xl border px-3 py-1" onClick={onAddPlayer}>+ player</button>
-              <button className="rounded-xl border px-3 py-1" onClick={onRemovePlayer}>− player</button>
-            </div>
 
-            <button
-              className="w-full max-w-[200px] rounded-2xl py-2 text-sm font-medium transition disabled:opacity-50 border border-neutral-300 bg-white hover:shadow-sm active:translate-y-px"
-              onClick={onStart}
-              disabled={!canStart}
-            >
-              Start
-            </button>
+
+            {isHost && (
+              <button
+                className="w-full max-w-[200px] rounded-2xl py-2 text-sm font-medium transition disabled:opacity-50 border border-neutral-300 bg-white hover:shadow-sm active:translate-y-px"
+                onClick={onStart}
+                disabled={!canStart}
+              >
+                Start
+              </button>
+            )}
           </div>
         </Middle>
       </div>
