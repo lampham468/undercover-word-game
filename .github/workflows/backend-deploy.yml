@@ -1,17 +1,24 @@
 name: Backend deploy (Cloudflare)
-on: { push: { branches: [main], paths: ['backend/**','packages/shared/**'] }, workflow_dispatch: {} }
+on:
+  push:
+    branches: [main]
+    paths: ['backend/**','packages/shared/**']
+  workflow_dispatch: {}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults: { run: { working-directory: backend } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: 'npm' }
       - run: npm ci
+        working-directory: backend
+
       - name: Publish
         uses: cloudflare/wrangler-action@v3
-        with: { workingDirectory: backend, command: deploy }
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        with:
+          workingDirectory: backend
+          command: deploy
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
