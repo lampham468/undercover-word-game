@@ -88,20 +88,8 @@ Create/commit `web/.env.production`:
 - **Frontend**
   - `session.ts`: session identity (stable across tabs in production)
   - `ws.ts`: WebSocket client with reconnection (250ms → 4s backoff)
-  - `roomClient.ts`: protocol layer, emits `{state,error,status}` events
+  - `roomClient.ts`: protocol layer, emits `{ state, error, status }` events
   - `useRoom.ts`: React hook exposing `{ state, svc, status, error }`
-
----
-
-## Manual Validation
-
-See `manual-test-validation.md` for a full checklist of what was verified:
-- Start both apps successfully
-- Dev/prod session behavior
-- Multi-tab host/join/start/end flows
-- Reconnection after network interruptions
-- Capacity limit (8) and error handling
-- API compatibility preserved for UI
 
 ---
 
